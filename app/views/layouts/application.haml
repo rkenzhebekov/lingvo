@@ -23,11 +23,15 @@
         %ul.right
           %li.active
             %a{:href => '#'} Right Button Active
-          %li.has-dropdown
-            %a{:href => '#'} Right Button with Dropdown
-            %ul.dropdown
-              %li
-                %a{:href => '#'} First link in dropdown
+          - if user_signed_in?
+            %li.has-dropdown
+              %a{:href => '#'}= current_user.email
+              %ul.dropdown
+                %li= link_to 'Edit profile', edit_user_registration_path
+                %li= link_to 'Logout', destroy_user_session_path, method: :delete
+          - else
+            %li= link_to 'Sign up', new_user_registration_path
+            %li= link_to 'Login', new_user_session_path
 
         -#-#<!-- Left Nav Section -->
         -#%ul.left
@@ -36,6 +40,8 @@
 
     .row
       .small-8.columns
+        %p.notice= notice
+        %p.alert= alert
         = yield
       .small-4.columns
         %h2.subheader About Us

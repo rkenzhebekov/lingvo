@@ -31,6 +31,8 @@ gem 'foundation-rails', '5.0.3.1'
 
 gem 'haml', '~> 4.0.5'
 
+gem 'devise', '~> 3.2.2'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
